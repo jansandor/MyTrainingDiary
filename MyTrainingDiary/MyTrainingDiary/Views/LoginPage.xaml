@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyTrainingDiary.Views.LoginPage"
+             xmlns:viewModels="clr-namespace:MyTrainingDiary.ViewModels">
+    <ContentPage.BindingContext>
+        <viewModels:LoginPageVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Title>MyTrainingDiary</ContentPage.Title>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Username:"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="StartAndExpand"></Label>
+
+            <Entry x:Name="UsernameEntry"
+                   Text="{Binding Username, Mode=OneWayToSource}"
+                   Placeholder="username"/>
+
+            <Label Text="Password:"
+                   VerticalOptions="Center"
+                   HorizontalOptions="StartAndExpand"></Label>
+
+            <Entry x:Name="PasswordEntry"
+                   Text="{Binding Password, Mode=OneWayToSource}"
+                   Placeholder="password"
+                   IsPassword="True"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Register"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="CenterAndExpand"
+                        Command="{Binding RegisterNewUserCommand}"
+                        IsEnabled="{Binding RegisterButtonEnabled}"/>
+
+
+                <Button Text="Sign in"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="CenterAndExpand"
+                        Command="{Binding SignInCommand}"/>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
